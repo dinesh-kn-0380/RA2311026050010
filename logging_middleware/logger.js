@@ -1,13 +1,5 @@
 const axios = require("axios");
 
-/**
- * Log function to send application logs to the centralized evaluation service.
- * 
- * @param {string} stack - The application stack (e.g., 'backend', 'frontend')
- * @param {string} level - The severity level (e.g., 'info', 'warn', 'error', 'fatal')
- * @param {string} pkg - The package or service name generating the log
- * @param {string} message - The log message content
- */
 const Log = async (stack, level, pkg, message) => {
   const payload = {
     stack,
@@ -30,10 +22,9 @@ const Log = async (stack, level, pkg, message) => {
 
     console.log(`[${level.toUpperCase()}] Log pushed successfully:`, response.data);
   } catch (error) {
-   
     const errorData = error.response ? error.response.data : error.message;
     console.error(`[LOG ERROR] Failed to send log:`, errorData);
   }
 };
 
-module.exports = Log;
+module.exports = Log;
